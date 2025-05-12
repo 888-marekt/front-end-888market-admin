@@ -4,8 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Checkbox } from "@/components/ui/checkbox"
-import { RevenueChart, SalesDonutChart } from "./charts"
 import Image from "next/image"
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
+import { CartesianGrid, Cell, Line, LineChart, Pie, ResponsiveContainer, XAxis, YAxis,PieChart } from "recharts"
 
 export function Report() {
   return (
@@ -192,11 +193,7 @@ export function Report() {
                 <h3 className="text-lg font-medium mb-4">Sales By Location</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="relative h-[150px] w-full">
-                    <Image src="/world-map.png" alt="World Map" fill className="object-cover rounded-lg" />
-                    <div className="absolute top-1/4 left-1/4 w-3 h-3 bg-blue-600 rounded-full shadow-lg shadow-blue-300"></div>
-                    <div className="absolute top-1/3 left-1/6 w-3 h-3 bg-blue-600 rounded-full shadow-lg shadow-blue-300"></div>
-                    <div className="absolute bottom-1/4 right-1/4 w-3 h-3 bg-blue-600 rounded-full shadow-lg shadow-blue-300"></div>
-                    <div className="absolute bottom-1/3 right-1/3 w-3 h-3 bg-blue-600 rounded-full shadow-lg shadow-blue-300"></div>
+                    <Image src="/img/map.gif" alt="World Map" fill className="object-cover rounded-lg" />
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
@@ -550,4 +547,165 @@ export function Report() {
       </main>
     </>
   )
+}
+
+
+function RevenueChart() {
+  const data = [
+    { month: "Jan", currentWeek: 10, previousWeek: 8 },
+    { month: "Feb", currentWeek: 15, previousWeek: 10 },
+    { month: "Mar", currentWeek: 12, previousWeek: 15 },
+    { month: "Apr", currentWeek: 8, previousWeek: 20 },
+    { month: "May", currentWeek: 15, previousWeek: 18 },
+    { month: "Jun", currentWeek: 20, previousWeek: 15 },
+  ];
+
+  return (
+    <ChartContainer className="h-[300px]" config={{}}>
+      <ResponsiveContainer width="100%" height="100%">
+        <LineChart
+          data={data}
+          margin={{
+            top: 5,
+            right: 10,
+            left: 10,
+            bottom: 0,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" vertical={false} />
+          <XAxis
+            dataKey="month"
+            tickLine={false}
+            axisLine={false}
+            tick={{ fontSize: 12, fill: "#6b7280" }}
+          />
+          <YAxis
+            tickLine={false}
+            axisLine={false}
+            tick={{ fontSize: 12, fill: "#6b7280" }}
+            tickFormatter={(value) => `${value}M`}
+          />
+          <ChartTooltip
+            content={({ active, payload }) => {
+              if (active && payload && payload.length) {
+                return (
+                  <ChartTooltipContent
+                    className="border-blue-500"
+                    items={[
+                      {
+                        label: "Current Week",
+                        value: `$${payload[0].value}M`,
+                        color: "#3b82f6",
+                      },
+                      {
+                        label: "Previous Week",
+                        value: `$${payload[1].value}M`,
+                        color: "#10b981",
+                      },
+                    ]}
+                  />
+                );
+              }
+              return null;
+            }}
+          />
+          <Line
+            type="monotone"
+            dataKey="currentWeek"
+            stroke="#3b82f6"
+            strokeWidth={2}
+            dot={{ r: 4, strokeWidth: 2 }}
+            activeDot={{ r: 6, strokeWidth: 2 }}
+          />
+          <Line
+            type="monotone"
+            dataKey="previousWeek"
+            stroke="#10b981"
+            strokeWidth={2}
+            dot={{ r: 4, strokeWidth: 2 }}
+            activeDot={{ r: 6, strokeWidth: 2 }}
+          />
+        </LineChart>
+      </ResponsiveContainer>
+    </ChartContainer>
+  );
+}
+
+function SalesDonutChart() {
+  const data = [
+    { name: "Direct", value: 38.6, color: "#3b82f6" },
+    { name: "Affiliate", value: 22.5, color: "#60a5fa" },
+    { name: "Sponsored", value: 30.8, color: "#93c5fd" },
+    { name: "E-mail", value: 8.1, color: "#bfdbfe" },
+  ];
+
+  return (
+    <div className="h-[200px] flex items-center justify-center">
+      <ResponsiveContainer width="100%" height="100%">
+        <PieChart>
+          <Pie
+            data={data}
+            cx="50%"
+            cy="50%"
+            innerRadius={60}
+            outerRadius={80}
+            paddingAngle={2}
+            dataKey="value"
+            label={({
+              cx,
+              cy,
+              midAngle,
+              innerRadius,
+              outerRadius,
+              percent,
+            }) => {
+              if (percent > 0.35) {
+                const RADIAN = Math.PI / 180;
+                const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
+                const x = cx + radius * Math.cos(-midAngle * RADIAN);
+                const y = cy + radius * Math.sin(-midAngle * RADIAN);
+                return (
+                  <text
+                    x={x}
+                    y={y}
+                    fill="#fff"
+                    textAnchor="middle"
+                    dominantBaseline="central"
+                    fontSize={12}
+                    fontWeight="bold"
+                  >
+                    {`${(percent * 100).toFixed(1)}%`}
+                  </text>
+                );
+              }
+              return null;
+            }}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color} />
+            ))}
+          </Pie>
+          <ChartTooltip
+            content={({ active, payload }) => {
+              if (active && payload && payload.length) {
+                return (
+                  <ChartTooltipContent
+                    className="border-blue-500"
+                    items={[
+                      {
+                        label: payload[0].name,
+                        value: `${payload[0].value}%`,
+                        color: payload[0].payload.color,
+                      },
+                    ]}
+                  />
+                );
+              }
+              return null;
+            }}
+          />
+        </PieChart>
+      </ResponsiveContainer>
+    </div>
+  );
 }
