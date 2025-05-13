@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Eye, EyeOff } from "lucide-react";
+import { redirect } from "next/navigation";
 
 interface LoginPageProps {
   onLogin: (email: string, password: string) => boolean;
@@ -23,21 +24,7 @@ export function LoginPage({ onLogin }: LoginPageProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!email || !password) {
-      setError("Please enter both email and password");
-      return;
-    }
-
-    if (!isRobot) {
-      setError("Please verify that you're not a robot");
-      return;
-    }
-
-    const success = onLogin(email, password);
-    if (!success) {
-      setError("Invalid email or password");
-    }
+    redirect("/dashboard");
   };
 
   return (
