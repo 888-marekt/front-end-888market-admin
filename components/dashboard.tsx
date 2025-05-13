@@ -1,9 +1,9 @@
-import { Bell, ChevronDown, Search } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { DashboardMetrics } from "./dashboard/dashboard-metrics"
-import { DashboardCharts } from "./dashboard/dashboard-charts"
-import { RecentOrders } from "./dashboard/recent-orders"
-import { TopProducts } from "./dashboard/top-products"
+import { Bell, ChevronDown, Search } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { DashboardMetrics } from "../app/dashboard/dashboard-metrics";
+import { DashboardCharts } from "../app/dashboard/dashboard-charts";
+import { RecentOrders } from "../app/dashboard/recent-orders";
+import { TopProducts } from "../app/dashboard/top-products";
 
 export function Dashboard() {
   return (
@@ -34,7 +34,9 @@ export function Dashboard() {
       <main className="p-6">
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-2">Welcome back, Wolde!</h2>
-          <p className="text-gray-500">Here's what's happening with your store today.</p>
+          <p className="text-gray-500">
+            Here's what's happening with your store today.
+          </p>
         </div>
 
         <DashboardMetrics />
@@ -50,5 +52,5 @@ export function Dashboard() {
         </div>
       </main>
     </>
-  )
+  );
 }
