@@ -25,10 +25,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="grid" style={{ gridTemplateColumns: "18rem 1fr" }}>
-            <Sidebar />
-            <>{children}</>
-          </div>
+          {children}
         </ThemeProvider>
       </body>
     </html>
