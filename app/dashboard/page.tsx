@@ -7,7 +7,7 @@ import { TopProducts } from "../../components/dashboard/top-products";
 
 export default function Dashboard() {
   return (
-    <>
+    <div>
       {/* Header */}
       <header className="flex items-center justify-between p-4 border-b border-gray-100">
         <h1 className="text-xl font-semibold">Dashboard</h1>
@@ -51,6 +51,6 @@ export default function Dashboard() {
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 }

@@ -1,14 +1,30 @@
-import { Badge } from "@/components/ui/badge"
-import { Bell, ChevronDown, Search, User, Lock, CreditCard, BellIcon, Globe, HelpCircle } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { Switch } from "@/components/ui/switch"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Badge } from "@/components/ui/badge";
+import {
+  Bell,
+  ChevronDown,
+  Search,
+  User,
+  Lock,
+  CreditCard,
+  BellIcon,
+  Globe,
+  HelpCircle,
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Switch } from "@/components/ui/switch";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export function Settings() {
+export default function Settings() {
   return (
     <>
       {/* Header */}
@@ -37,7 +53,9 @@ export function Settings() {
       <main className="p-6">
         <div className="mb-6">
           <h2 className="text-2xl font-bold mb-1">Settings</h2>
-          <p className="text-gray-500">Manage your account settings and preferences</p>
+          <p className="text-gray-500">
+            Manage your account settings and preferences
+          </p>
         </div>
 
         <Tabs defaultValue="account" className="w-full">
@@ -56,11 +74,17 @@ export function Settings() {
                   <CreditCard className="mr-2 h-4 w-4" />
                   Billing
                 </TabsTrigger>
-                <TabsTrigger value="notifications" className="justify-start w-full">
+                <TabsTrigger
+                  value="notifications"
+                  className="justify-start w-full"
+                >
                   <BellIcon className="mr-2 h-4 w-4" />
                   Notifications
                 </TabsTrigger>
-                <TabsTrigger value="appearance" className="justify-start w-full">
+                <TabsTrigger
+                  value="appearance"
+                  className="justify-start w-full"
+                >
                   <Globe className="mr-2 h-4 w-4" />
                   Appearance
                 </TabsTrigger>
@@ -75,7 +99,9 @@ export function Settings() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Account Information</CardTitle>
-                    <CardDescription>Update your account information and profile details.</CardDescription>
+                    <CardDescription>
+                      Update your account information and profile details.
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex flex-col md:flex-row gap-4 md:items-center mb-6">
@@ -87,7 +113,9 @@ export function Settings() {
                         <Button variant="outline" size="sm" className="mb-2">
                           Change Avatar
                         </Button>
-                        <p className="text-sm text-gray-500">JPG, GIF or PNG. Max size of 800K</p>
+                        <p className="text-sm text-gray-500">
+                          JPG, GIF or PNG. Max size of 800K
+                        </p>
                       </div>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -102,7 +130,11 @@ export function Settings() {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="email">Email</Label>
-                      <Input id="email" type="email" defaultValue="wolde@example.com" />
+                      <Input
+                        id="email"
+                        type="email"
+                        defaultValue="wolde@example.com"
+                      />
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="company">Company</Label>
@@ -116,7 +148,9 @@ export function Settings() {
                         defaultValue="An Investor in software products and ecommerce...."
                       />
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-700">Save Changes</Button>
+                    <Button className="bg-blue-600 hover:bg-blue-700">
+                      Save Changes
+                    </Button>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -124,7 +158,9 @@ export function Settings() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Security Settings</CardTitle>
-                    <CardDescription>Manage your password and security preferences.</CardDescription>
+                    <CardDescription>
+                      Manage your password and security preferences.
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-2">
@@ -140,16 +176,22 @@ export function Settings() {
                       <Input id="confirm-password" type="password" />
                     </div>
                     <div className="pt-4">
-                      <h3 className="text-lg font-medium mb-4">Two-Factor Authentication</h3>
+                      <h3 className="text-lg font-medium mb-4">
+                        Two-Factor Authentication
+                      </h3>
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Enable 2FA</p>
-                          <p className="text-sm text-gray-500">Add an extra layer of security to your account</p>
+                          <p className="text-sm text-gray-500">
+                            Add an extra layer of security to your account
+                          </p>
                         </div>
                         <Switch />
                       </div>
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-700">Save Changes</Button>
+                    <Button className="bg-blue-600 hover:bg-blue-700">
+                      Save Changes
+                    </Button>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -157,40 +199,52 @@ export function Settings() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Notification Preferences</CardTitle>
-                    <CardDescription>Manage how you receive notifications.</CardDescription>
+                    <CardDescription>
+                      Manage how you receive notifications.
+                    </CardDescription>
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="space-y-4">
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Email Notifications</p>
-                          <p className="text-sm text-gray-500">Receive notifications via email</p>
+                          <p className="text-sm text-gray-500">
+                            Receive notifications via email
+                          </p>
                         </div>
                         <Switch defaultChecked />
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Order Updates</p>
-                          <p className="text-sm text-gray-500">Receive updates about your orders</p>
+                          <p className="text-sm text-gray-500">
+                            Receive updates about your orders
+                          </p>
                         </div>
                         <Switch defaultChecked />
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Marketing Emails</p>
-                          <p className="text-sm text-gray-500">Receive marketing emails and promotions</p>
+                          <p className="text-sm text-gray-500">
+                            Receive marketing emails and promotions
+                          </p>
                         </div>
                         <Switch />
                       </div>
                       <div className="flex items-center justify-between">
                         <div>
                           <p className="font-medium">Product Updates</p>
-                          <p className="text-sm text-gray-500">Receive updates about new products</p>
+                          <p className="text-sm text-gray-500">
+                            Receive updates about new products
+                          </p>
                         </div>
                         <Switch defaultChecked />
                       </div>
                     </div>
-                    <Button className="bg-blue-600 hover:bg-blue-700">Save Preferences</Button>
+                    <Button className="bg-blue-600 hover:bg-blue-700">
+                      Save Preferences
+                    </Button>
                   </CardContent>
                 </Card>
               </TabsContent>
@@ -198,7 +252,9 @@ export function Settings() {
                 <Card>
                   <CardHeader>
                     <CardTitle>Billing Information</CardTitle>
-                    <CardDescription>Manage your billing information and payment methods.</CardDescription>
+                    <CardDescription>
+                      Manage your billing information and payment methods.
+                    </CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-4">
@@ -206,12 +262,18 @@ export function Settings() {
                         <div className="flex items-center justify-between mb-4">
                           <div>
                             <p className="font-medium">Current Plan</p>
-                            <p className="text-sm text-gray-500">You are currently on the Pro plan</p>
+                            <p className="text-sm text-gray-500">
+                              You are currently on the Pro plan
+                            </p>
                           </div>
-                          <Badge className="bg-blue-100 text-blue-600 hover:bg-blue-100">Pro</Badge>
+                          <Badge className="bg-blue-100 text-blue-600 hover:bg-blue-100">
+                            Pro
+                          </Badge>
                         </div>
                         <div className="flex items-center justify-between">
-                          <p className="text-sm text-gray-500">Next billing date: June 12, 2025</p>
+                          <p className="text-sm text-gray-500">
+                            Next billing date: June 12, 2025
+                          </p>
                           <Button variant="outline" size="sm">
                             Change Plan
                           </Button>
@@ -221,14 +283,18 @@ export function Settings() {
                         <div className="flex items-center justify-between mb-4">
                           <div>
                             <p className="font-medium">Payment Method</p>
-                            <p className="text-sm text-gray-500">Visa ending in 4242</p>
+                            <p className="text-sm text-gray-500">
+                              Visa ending in 4242
+                            </p>
                           </div>
                           <Button variant="outline" size="sm">
                             Change
                           </Button>
                         </div>
                         <div className="flex items-center justify-between">
-                          <p className="text-sm text-gray-500">Expires: 12/2025</p>
+                          <p className="text-sm text-gray-500">
+                            Expires: 12/2025
+                          </p>
                           <Button variant="outline" size="sm">
                             Add New
                           </Button>
@@ -238,7 +304,9 @@ export function Settings() {
                         <div className="flex items-center justify-between mb-4">
                           <div>
                             <p className="font-medium">Billing Address</p>
-                            <p className="text-sm text-gray-500">123 Main St, New York, NY 10001</p>
+                            <p className="text-sm text-gray-500">
+                              123 Main St, New York, NY 10001
+                            </p>
                           </div>
                           <Button variant="outline" size="sm">
                             Edit
@@ -254,5 +322,5 @@ export function Settings() {
         </Tabs>
       </main>
     </>
-  )
+  );
 }

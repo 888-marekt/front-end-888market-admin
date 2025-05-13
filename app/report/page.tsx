@@ -1,14 +1,28 @@
-import { Bell, ChevronDown, Filter, MoreVertical, Search } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Checkbox } from "@/components/ui/checkbox"
-import Image from "next/image"
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
-import { CartesianGrid, Cell, Line, LineChart, Pie, ResponsiveContainer, XAxis, YAxis,PieChart } from "recharts"
+import { Bell, ChevronDown, Filter, MoreVertical, Search } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Checkbox } from "@/components/ui/checkbox";
+import Image from "next/image";
+import {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+} from "@/components/ui/chart";
+import {
+  CartesianGrid,
+  Cell,
+  Line,
+  LineChart,
+  Pie,
+  ResponsiveContainer,
+  XAxis,
+  YAxis,
+  PieChart,
+} from "recharts";
 
-export function Report() {
+export default function Report() {
   return (
     <>
       {/* Header */}
@@ -39,7 +53,9 @@ export function Report() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">Total Sales</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-500">
+                Total Sales
+              </CardTitle>
               <MoreVertical size={16} className="text-gray-500" />
             </CardHeader>
             <CardContent>
@@ -71,7 +87,9 @@ export function Report() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">Total Order</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-500">
+                Total Order
+              </CardTitle>
               <MoreVertical size={16} className="text-gray-500" />
             </CardHeader>
             <CardContent>
@@ -103,7 +121,9 @@ export function Report() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">Total Revenue</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-500">
+                Total Revenue
+              </CardTitle>
               <MoreVertical size={16} className="text-gray-500" />
             </CardHeader>
             <CardContent>
@@ -135,7 +155,9 @@ export function Report() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between pb-2">
-              <CardTitle className="text-sm font-medium text-gray-500">Total Customer</CardTitle>
+              <CardTitle className="text-sm font-medium text-gray-500">
+                Total Customer
+              </CardTitle>
               <MoreVertical size={16} className="text-gray-500" />
             </CardHeader>
             <CardContent>
@@ -193,11 +215,18 @@ export function Report() {
                 <h3 className="text-lg font-medium mb-4">Sales By Location</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="relative h-[150px] w-full">
-                    <Image src="/img/map.gif" alt="World Map" fill className="object-cover rounded-lg" />
+                    <Image
+                      src="/img/map.gif"
+                      alt="World Map"
+                      fill
+                      className="object-cover rounded-lg"
+                    />
                   </div>
                   <div className="space-y-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-blue-600 border-b border-blue-600 pb-1">New York</span>
+                      <span className="text-sm font-medium text-blue-600 border-b border-blue-600 pb-1">
+                        New York
+                      </span>
                       <span className="text-sm">72K</span>
                     </div>
                     <div className="flex items-center justify-between">
@@ -312,7 +341,9 @@ export function Report() {
                           <ChevronDown size={16} />
                         </div>
                       </th>
-                      <th className="p-4 text-left font-medium text-sm text-gray-500">Action</th>
+                      <th className="p-4 text-left font-medium text-sm text-gray-500">
+                        Action
+                      </th>
                     </tr>
                   </thead>
                   <tbody>
@@ -322,7 +353,9 @@ export function Report() {
                       </td>
                       <td className="p-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">👕</div>
+                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">
+                            👕
+                          </div>
                           <span>Shirt</span>
                         </div>
                       </td>
@@ -342,7 +375,9 @@ export function Report() {
                       </td>
                       <td className="p-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">👚</div>
+                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">
+                            👚
+                          </div>
                           <span>T-Shirt</span>
                         </div>
                       </td>
@@ -362,7 +397,9 @@ export function Report() {
                       </td>
                       <td className="p-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">👖</div>
+                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">
+                            👖
+                          </div>
                           <span>Pant</span>
                         </div>
                       </td>
@@ -382,7 +419,9 @@ export function Report() {
                       </td>
                       <td className="p-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">🧥</div>
+                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">
+                            🧥
+                          </div>
                           <span>Sweater</span>
                         </div>
                       </td>
@@ -402,7 +441,9 @@ export function Report() {
                       </td>
                       <td className="p-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">🧥</div>
+                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">
+                            🧥
+                          </div>
                           <span>Light Jacket</span>
                         </div>
                       </td>
@@ -422,7 +463,9 @@ export function Report() {
                       </td>
                       <td className="p-4">
                         <div className="flex items-center gap-2">
-                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">👔</div>
+                          <div className="w-8 h-8 bg-gray-100 rounded-md flex items-center justify-center">
+                            👔
+                          </div>
                           <span>Half Shirt</span>
                         </div>
                       </td>
@@ -451,7 +494,9 @@ export function Report() {
                 </Button>
               </div>
 
-              <div className="text-center text-sm text-gray-500 mb-8">Target you've set for each month</div>
+              <div className="text-center text-sm text-gray-500 mb-8">
+                Target you've set for each month
+              </div>
 
               <div className="flex justify-center mb-4">
                 <div className="relative w-48 h-48">
@@ -469,7 +514,8 @@ export function Report() {
 
               <div className="text-center mb-8">
                 <p className="text-sm text-gray-600">
-                  You earn $3267 today, its higher than last month keep up your good trends!
+                  You earn $3267 today, its higher than last month keep up your
+                  good trends!
                 </p>
               </div>
 
@@ -546,9 +592,8 @@ export function Report() {
         </div>
       </main>
     </>
-  )
+  );
 }
-
 
 function RevenueChart() {
   const data = [

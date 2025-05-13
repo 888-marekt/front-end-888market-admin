@@ -1,17 +1,26 @@
-import { Bell, ChevronDown, Filter, MoreVertical, Plus, Search, Trash2 } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
-import Image from "next/image"
+import {
+  Bell,
+  ChevronDown,
+  Filter,
+  MoreVertical,
+  Plus,
+  Search,
+  Trash2,
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
 
-export function Products() {
+export default function Products() {
   const products = [
     {
       id: 1,
       name: "Nike Air Max 270",
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
+      image:
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
       category: "Footwear",
       price: "$120.00",
       stock: 45,
@@ -40,7 +49,8 @@ export function Products() {
     {
       id: 4,
       name: "New Balance 990",
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
+      image:
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
       category: "Footwear",
       price: "$175.00",
       stock: 27,
@@ -49,7 +59,8 @@ export function Products() {
     {
       id: 5,
       name: "Converse Chuck 70",
-      image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
+      image:
+        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
       category: "Footwear",
       price: "$85.00",
       stock: 0,
@@ -65,20 +76,20 @@ export function Products() {
       stock: 41,
       status: "In Stock",
     },
-  ]
+  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "In Stock":
-        return "bg-green-100 text-green-600 hover:bg-green-100"
+        return "bg-green-100 text-green-600 hover:bg-green-100";
       case "Low Stock":
-        return "bg-yellow-100 text-yellow-600 hover:bg-yellow-100"
+        return "bg-yellow-100 text-yellow-600 hover:bg-yellow-100";
       case "Out of Stock":
-        return "bg-red-100 text-red-600 hover:bg-red-100"
+        return "bg-red-100 text-red-600 hover:bg-red-100";
       default:
-        return "bg-gray-100 text-gray-600 hover:bg-gray-100"
+        return "bg-gray-100 text-gray-600 hover:bg-gray-100";
     }
-  }
+  };
 
   return (
     <>
@@ -133,7 +144,11 @@ export function Products() {
               </div>
             </div>
             <div className="flex items-center gap-2">
-              <Button variant="outline" size="sm" className="text-red-600 border-red-200">
+              <Button
+                variant="outline"
+                size="sm"
+                className="text-red-600 border-red-200"
+              >
                 <Trash2 size={16} className="mr-2" /> Delete
               </Button>
               <Button variant="outline" size="sm">
@@ -149,12 +164,24 @@ export function Products() {
                     <th className="w-10 p-4">
                       <Checkbox />
                     </th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Product</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Category</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Price</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Stock</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Status</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Actions</th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Product
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Category
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Price
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Stock
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Status
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -177,10 +204,14 @@ export function Products() {
                         </div>
                       </td>
                       <td className="p-4 text-sm">{product.category}</td>
-                      <td className="p-4 text-sm font-medium">{product.price}</td>
+                      <td className="p-4 text-sm font-medium">
+                        {product.price}
+                      </td>
                       <td className="p-4 text-sm">{product.stock}</td>
                       <td className="p-4">
-                        <Badge className={getStatusColor(product.status)}>{product.status}</Badge>
+                        <Badge className={getStatusColor(product.status)}>
+                          {product.status}
+                        </Badge>
                       </td>
                       <td className="p-4">
                         <Button variant="ghost" size="icon">
@@ -196,5 +227,5 @@ export function Products() {
         </Card>
       </main>
     </>
-  )
+  );
 }

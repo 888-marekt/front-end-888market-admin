@@ -10,16 +10,18 @@ import {
   LogOut,
   ChevronDown,
 } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface SidebarProps {
-  activeTab: string;
-  setActiveTab: (tab: string) => void;
+  activeTab?: string;
+  setActiveTab?: (tab: string) => void;
 }
 
-export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
-  const handleTabChange = (tab: string) => {
-    setActiveTab(tab);
-  };
+export function Sidebar() {
+  const pathName = usePathname();
+  const activeTab = pathName.slice(pathName.indexOf("/") + 1);
+  console.log(activeTab);
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");
@@ -56,8 +58,8 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
       </div>
 
       <nav className="space-y-4 flex-1">
-        <button
-          onClick={() => handleTabChange("dashboard")}
+        <Link
+          href={"/dashboard"}
           className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
             activeTab === "dashboard"
               ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -66,10 +68,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         >
           <LayoutGrid size={20} />
           <span>Dashboard</span>
-        </button>
+        </Link>
 
-        <button
-          onClick={() => handleTabChange("products")}
+        <Link
+          href={"/products"}
           className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
             activeTab === "products"
               ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -79,10 +81,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
           <ShoppingBag size={20} />
           <span>Products</span>
           <ChevronDown size={16} className="ml-auto" />
-        </button>
+        </Link>
 
-        <button
-          onClick={() => handleTabChange("flash-sales")}
+        <Link
+          href={"/flashsales"}
           className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
             activeTab === "flash-sales"
               ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -91,10 +93,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         >
           <ShoppingBag size={20} />
           <span>Flash Sales</span>
-        </button>
+        </Link>
 
-        <button
-          onClick={() => handleTabChange("customers")}
+        <Link
+          href={"/customers"}
           className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
             activeTab === "customers"
               ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -103,10 +105,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         >
           <Users size={20} />
           <span>Customers</span>
-        </button>
+        </Link>
 
-        <button
-          onClick={() => handleTabChange("order-list")}
+        <Link
+          href={"/orderlist"}
           className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
             activeTab === "order-list"
               ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -115,10 +117,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         >
           <ShoppingCart size={20} />
           <span>Order List</span>
-        </button>
+        </Link>
 
-        <button
-          onClick={() => handleTabChange("report")}
+        <Link
+          href={"/report"}
           className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
             activeTab === "report"
               ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -127,10 +129,10 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         >
           <Menu size={20} />
           <span>Report</span>
-        </button>
+        </Link>
 
-        <button
-          onClick={() => handleTabChange("settings")}
+        <Link
+          href={"/settings"}
           className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
             activeTab === "settings"
               ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -139,7 +141,7 @@ export function Sidebar({ activeTab, setActiveTab }: SidebarProps) {
         >
           <SettingsIcon size={20} />
           <span>Settings</span>
-        </button>
+        </Link>
       </nav>
 
       <div className="mt-auto pt-4 border-t border-gray-100">

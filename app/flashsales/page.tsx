@@ -1,12 +1,12 @@
-import { Bell, ChevronDown, Clock, Search } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
-import { Progress } from "@/components/ui/progress"
-import Image from "next/image"
+import { Bell, ChevronDown, Clock, Search } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Progress } from "@/components/ui/progress";
+import Image from "next/image";
 
-export function FlashSales() {
+export default function FlashSales() {
   const flashSales = [
     {
       id: 1,
@@ -52,20 +52,20 @@ export function FlashSales() {
       products: 15,
       status: "Ended",
     },
-  ]
+  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Active":
-        return "bg-green-100 text-green-600 hover:bg-green-100"
+        return "bg-green-100 text-green-600 hover:bg-green-100";
       case "Ended":
-        return "bg-gray-100 text-gray-600 hover:bg-gray-100"
+        return "bg-gray-100 text-gray-600 hover:bg-gray-100";
       case "Scheduled":
-        return "bg-blue-100 text-blue-600 hover:bg-blue-100"
+        return "bg-blue-100 text-blue-600 hover:bg-blue-100";
       default:
-        return "bg-gray-100 text-gray-600 hover:bg-gray-100"
+        return "bg-gray-100 text-gray-600 hover:bg-gray-100";
     }
-  }
+  };
 
   return (
     <>
@@ -96,18 +96,29 @@ export function FlashSales() {
         <div className="flex items-center justify-between mb-6">
           <div>
             <h2 className="text-2xl font-bold mb-1">Flash Sales</h2>
-            <p className="text-gray-500">Create and manage limited-time promotions</p>
+            <p className="text-gray-500">
+              Create and manage limited-time promotions
+            </p>
           </div>
-          <Button className="bg-blue-600 hover:bg-blue-700">Create Flash Sale</Button>
+          <Button className="bg-blue-600 hover:bg-blue-700">
+            Create Flash Sale
+          </Button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {flashSales.map((sale) => (
             <Card key={sale.id} className="overflow-hidden">
               <div className="relative h-40 w-full">
-                <Image src={sale.image || "/placeholder.svg"} alt={sale.name} fill className="object-cover" />
+                <Image
+                  src={sale.image || "/placeholder.svg"}
+                  alt={sale.name}
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute top-3 right-3">
-                  <Badge className={getStatusColor(sale.status)}>{sale.status}</Badge>
+                  <Badge className={getStatusColor(sale.status)}>
+                    {sale.status}
+                  </Badge>
                 </div>
                 <div className="absolute bottom-3 left-3 bg-black bg-opacity-70 text-white px-3 py-1 rounded-md font-bold">
                   {sale.discount}
@@ -129,7 +140,9 @@ export function FlashSales() {
                   <Progress value={sale.progress} className="h-2" />
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">{sale.products} products</span>
+                  <span className="text-gray-500">
+                    {sale.products} products
+                  </span>
                   <Button variant="link" className="p-0 h-auto text-blue-600">
                     View Details
                   </Button>
@@ -140,5 +153,5 @@ export function FlashSales() {
         </div>
       </main>
     </>
-  )
+  );
 }
