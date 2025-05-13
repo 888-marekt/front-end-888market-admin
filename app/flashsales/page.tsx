@@ -68,7 +68,7 @@ export default function FlashSales() {
   };
 
   return (
-    <>
+    <div>
       {/* Header */}
       <header className="flex items-center justify-between p-4 border-b border-gray-100">
         <h1 className="text-xl font-semibold">Flash Sales</h1>
@@ -152,6 +152,6 @@ export default function FlashSales() {
           ))}
         </div>
       </main>
-    </>
+    </div>
   );
 }

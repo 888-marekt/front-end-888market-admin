@@ -92,7 +92,7 @@ export default function Products() {
   };
 
   return (
-    <>
+    <div>
       {/* Header */}
       <header className="flex items-center justify-between p-4 border-b border-gray-100">
         <h1 className="text-xl font-semibold">Products</h1>
@@ -226,6 +226,6 @@ export default function Products() {
           </CardContent>
         </Card>
       </main>
-    </>
+    </div>
   );
 }

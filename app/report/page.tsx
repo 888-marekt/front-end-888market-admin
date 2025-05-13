@@ -24,7 +24,7 @@ import {
 
 export default function Report() {
   return (
-    <>
+    <div>
       {/* Header */}
       <header className="flex items-center justify-between p-4 border-b border-gray-100">
         <h1 className="text-xl font-semibold">Report Analysis</h1>
@@ -591,7 +591,7 @@ export default function Report() {
           </Card>
         </div>
       </main>
-    </>
+    </div>
   );
 }
 
