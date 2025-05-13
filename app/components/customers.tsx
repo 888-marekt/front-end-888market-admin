@@ -1,8 +1,15 @@
-import { Bell, ChevronDown, Filter, MoreVertical, Search, UserPlus } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Badge } from "@/components/ui/badge"
+import {
+  Bell,
+  ChevronDown,
+  Filter,
+  MoreVertical,
+  Search,
+  UserPlus,
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 
 export function Customers() {
   const customers = [
@@ -78,18 +85,18 @@ export function Customers() {
       lastOrder: "May 7, 2025",
       status: "Inactive",
     },
-  ]
+  ];
 
   const getStatusColor = (status: string) => {
     switch (status) {
       case "Active":
-        return "bg-green-100 text-green-600 hover:bg-green-100"
+        return "bg-green-100 text-green-600 hover:bg-green-100";
       case "Inactive":
-        return "bg-gray-100 text-gray-600 hover:bg-gray-100"
+        return "bg-gray-100 text-gray-600 hover:bg-gray-100";
       default:
-        return "bg-gray-100 text-gray-600 hover:bg-gray-100"
+        return "bg-gray-100 text-gray-600 hover:bg-gray-100";
     }
-  }
+  };
 
   return (
     <>
@@ -152,13 +159,27 @@ export function Customers() {
               <table className="w-full">
                 <thead>
                   <tr className="border-b border-gray-100">
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Customer</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Location</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Orders</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Spent</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Last Order</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Status</th>
-                    <th className="p-4 text-left font-medium text-sm text-gray-500">Actions</th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Customer
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Location
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Orders
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Spent
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Last Order
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Status
+                    </th>
+                    <th className="p-4 text-left font-medium text-sm text-gray-500">
+                      Actions
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -167,21 +188,35 @@ export function Customers() {
                       <td className="p-4">
                         <div className="flex items-center gap-3">
                           <Avatar>
-                            <AvatarImage src={customer.avatar || "/placeholder.svg"} />
-                            <AvatarFallback>{customer.name.charAt(0)}</AvatarFallback>
+                            <AvatarImage
+                              src={customer.avatar || "/placeholder.svg"}
+                            />
+                            <AvatarFallback>
+                              {customer.name.charAt(0)}
+                            </AvatarFallback>
                           </Avatar>
                           <div>
                             <div className="font-medium">{customer.name}</div>
-                            <div className="text-sm text-gray-500">{customer.email}</div>
+                            <div className="text-sm text-gray-500">
+                              {customer.email}
+                            </div>
                           </div>
                         </div>
                       </td>
                       <td className="p-4 text-sm">{customer.location}</td>
-                      <td className="p-4 text-sm font-medium">{customer.orders}</td>
-                      <td className="p-4 text-sm font-medium">{customer.spent}</td>
-                      <td className="p-4 text-sm text-gray-500">{customer.lastOrder}</td>
+                      <td className="p-4 text-sm font-medium">
+                        {customer.orders}
+                      </td>
+                      <td className="p-4 text-sm font-medium">
+                        {customer.spent}
+                      </td>
+                      <td className="p-4 text-sm text-gray-500">
+                        {customer.lastOrder}
+                      </td>
                       <td className="p-4">
-                        <Badge className={getStatusColor(customer.status)}>{customer.status}</Badge>
+                        <Badge className={getStatusColor(customer.status)}>
+                          {customer.status}
+                        </Badge>
                       </td>
                       <td className="p-4">
                         <Button variant="ghost" size="icon">
@@ -197,5 +232,5 @@ export function Customers() {
         </Card>
       </main>
     </>
-  )
+  );
 }
