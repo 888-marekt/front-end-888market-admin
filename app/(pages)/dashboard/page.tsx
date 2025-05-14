@@ -1,9 +1,9 @@
 import { Bell, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { DashboardMetrics } from "../../components/dashboard/dashboard-metrics";
-import { DashboardCharts } from "../../components/dashboard/dashboard-charts";
-import { RecentOrders } from "../../components/dashboard/recent-orders";
-import { TopProducts } from "../../components/dashboard/top-products";
+import { DashboardMetrics } from "../../../components/dashboard/dashboard-metrics";
+import { DashboardCharts } from "../../../components/dashboard/dashboard-charts";
+import { RecentOrders } from "../../../components/dashboard/recent-orders";
+import { TopProducts } from "../../../components/dashboard/top-products";
 
 export default function Dashboard() {
   return (
