@@ -7,9 +7,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
 import { useEffect } from "react";
+import { useProducts } from "@/hooks/useProducts";
 
 export default function Products() {
-  const products = [
+  const productss = [
     {
       id: 1,
       name: "Nike Air Max 270",
@@ -84,9 +85,10 @@ export default function Products() {
         return "bg-gray-100 text-gray-600 hover:bg-gray-100";
     }
   };
+  const { products } = useProducts();
 
   useEffect(() => {
-    
+    console.log(products);
   }, []);
 
   return (
@@ -159,7 +161,7 @@ export default function Products() {
                 </tr>
               </thead>
               <tbody>
-                {products.map((product) => (
+                {productss.map((product) => (
                   <tr key={product.id} className="border-b border-gray-100">
                     <td className="p-4">
                       <Checkbox />
