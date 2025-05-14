@@ -13,11 +13,6 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-interface SidebarProps {
-  activeTab?: string;
-  setActiveTab?: (tab: string) => void;
-}
-
 export function Sidebar() {
   const pathName = usePathname();
   const activeTab = pathName.slice(pathName.indexOf("/") + 1);
@@ -29,7 +24,7 @@ export function Sidebar() {
   };
 
   return (
-    <div className="w-64 border-r border-gray-100 p-4 flex flex-col">
+    <div className="w-64 border-r border-gray-100 p-4 flex flex-col h-screen overflow-hidden">
       <div className="flex items-center gap-6 mb-12">
         <div className="text-blue-600 font-bold text-xl flex items-center">
           <svg

@@ -68,90 +68,63 @@ export default function FlashSales() {
   };
 
   return (
-    <div>
-      {/* Header */}
-      <header className="flex items-center justify-between p-4 border-b border-gray-100">
-        <h1 className="text-xl font-semibold">Flash Sales</h1>
-
-        <div className="flex items-center gap-4">
-          <button className="p-2 text-gray-500 hover:text-gray-700">
-            <Search size={20} />
-          </button>
-          <button className="p-2 text-gray-500 hover:text-gray-700 relative">
-            <Bell size={20} />
-            <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
-          </button>
-          <div className="flex items-center gap-2">
-            <Avatar>
-              <AvatarImage src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" />
-              <AvatarFallback>U</AvatarFallback>
-            </Avatar>
-            <ChevronDown size={16} className="text-gray-500" />
-          </div>
+    <main className="p-6">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-2xl font-bold mb-1">Flash Sales</h2>
+          <p className="text-gray-500">
+            Create and manage limited-time promotions
+          </p>
         </div>
-      </header>
+        <Button className="bg-blue-600 hover:bg-blue-700">
+          Create Flash Sale
+        </Button>
+      </div>
 
-      {/* Flash Sales Content */}
-      <main className="p-6">
-        <div className="flex items-center justify-between mb-6">
-          <div>
-            <h2 className="text-2xl font-bold mb-1">Flash Sales</h2>
-            <p className="text-gray-500">
-              Create and manage limited-time promotions
-            </p>
-          </div>
-          <Button className="bg-blue-600 hover:bg-blue-700">
-            Create Flash Sale
-          </Button>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {flashSales.map((sale) => (
-            <Card key={sale.id} className="overflow-hidden">
-              <div className="relative h-40 w-full">
-                <Image
-                  src={sale.image || "/placeholder.svg"}
-                  alt={sale.name}
-                  fill
-                  className="object-cover"
-                />
-                <div className="absolute top-3 right-3">
-                  <Badge className={getStatusColor(sale.status)}>
-                    {sale.status}
-                  </Badge>
-                </div>
-                <div className="absolute bottom-3 left-3 bg-black bg-opacity-70 text-white px-3 py-1 rounded-md font-bold">
-                  {sale.discount}
-                </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {flashSales.map((sale) => (
+          <Card key={sale.id} className="overflow-hidden">
+            <div className="relative h-40 w-full">
+              <Image
+                src={sale.image || "/placeholder.svg"}
+                alt={sale.name}
+                fill
+                className="object-cover"
+              />
+              <div className="absolute top-3 right-3">
+                <Badge className={getStatusColor(sale.status)}>
+                  {sale.status}
+                </Badge>
               </div>
-              <CardHeader className="pb-2">
-                <CardTitle>{sale.name}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center gap-2 mb-3 text-sm text-gray-500">
-                  <Clock size={16} />
-                  <span>{sale.timeLeft}</span>
+              <div className="absolute bottom-3 left-3 bg-black bg-opacity-70 text-white px-3 py-1 rounded-md font-bold">
+                {sale.discount}
+              </div>
+            </div>
+            <CardHeader className="pb-2">
+              <CardTitle>{sale.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="flex items-center gap-2 mb-3 text-sm text-gray-500">
+                <Clock size={16} />
+                <span>{sale.timeLeft}</span>
+              </div>
+              <div className="mb-3">
+                <div className="flex items-center justify-between mb-1 text-sm">
+                  <span>Progress</span>
+                  <span className="font-medium">{sale.progress}%</span>
                 </div>
-                <div className="mb-3">
-                  <div className="flex items-center justify-between mb-1 text-sm">
-                    <span>Progress</span>
-                    <span className="font-medium">{sale.progress}%</span>
-                  </div>
-                  <Progress value={sale.progress} className="h-2" />
-                </div>
-                <div className="flex items-center justify-between text-sm">
-                  <span className="text-gray-500">
-                    {sale.products} products
-                  </span>
-                  <Button variant="link" className="p-0 h-auto text-blue-600">
-                    View Details
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </main>
-    </div>
+                <Progress value={sale.progress} className="h-2" />
+              </div>
+              <div className="flex items-center justify-between text-sm">
+                <span className="text-gray-500">{sale.products} products</span>
+                <Button variant="link" className="p-0 h-auto text-blue-600">
+                  View Details
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </main>
   );
 }
