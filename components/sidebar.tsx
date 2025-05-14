@@ -16,7 +16,6 @@ import { usePathname } from "next/navigation";
 export function Sidebar() {
   const pathName = usePathname();
   const activeTab = pathName.slice(pathName.indexOf("/") + 1);
-  console.log(activeTab);
 
   const handleLogout = () => {
     localStorage.removeItem("isAuthenticated");

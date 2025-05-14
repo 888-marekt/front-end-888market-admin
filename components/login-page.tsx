@@ -43,51 +43,6 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 bg-[url('/img/admin-bg.svg')]">
       <div className="w-full max-w-xl grid bg-white rounded-lg overflow-hidden shadow-xl">
-        {/* Left side - Illustration */}
-        {/* <div className="relative hidden md:block bg-blue-50 p-8">
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80')] bg-cover bg-center opacity-5"></div>
-          <div className="relative h-full flex flex-col items-center justify-center">
-            <div className="bg-white rounded-xl p-6 shadow-lg max-w-md mx-auto">
-              <div className="flex justify-center mb-4">
-                <div className="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="32"
-                    height="32"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="white"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <circle cx="9" cy="21" r="1"></circle>
-                    <circle cx="20" cy="21" r="1"></circle>
-                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                  </svg>
-                </div>
-              </div>
-              <h2 className="text-2xl text-center text-gray-600 mb-4">
-                888Market
-              </h2>
-              <div className="relative mt-8">
-                <Image
-                  src="https://images.unsplash.com/photo-1591085686350-798c0f9faa7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
-                  alt="Shopping bags and cart"
-                  width={400}
-                  height={300}
-                  className="rounded-lg"
-                />
-                <div className="absolute -bottom-4 -right-4">
-                  <div className="bg-yellow-400 text-yellow-800 px-4 py-2 rounded-lg shadow-md transform rotate-6">
-                    <span className="font-bold">%</span> SALE
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div> */}
-
         {/* Right side - Login form */}
         <div className="p-8 flex flex-col justify-center">
           <div className="text-center mb-8">
