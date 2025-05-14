@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Eye, EyeOff } from "lucide-react";
 import { redirect } from "next/navigation";
+import { useLogin } from "@/hooks/useLogin";
 
 interface LoginPageProps {
   onLogin: (email: string, password: string) => boolean;
@@ -21,10 +22,19 @@ export function LoginPage({ onLogin }: LoginPageProps) {
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isRobot, setIsRobot] = useState(false);
-
+  const {
+    login,
+    isLogggingIn,
+    isSuccess,
+    isError,
+    data: loginData,
+    error: loginError,
+  } = useLogin();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    redirect("/dashboard");
+    login({ email, password });
+    console.log(loginData);
+    // redirect("/dashboard");
   };
 
   return (

@@ -9,6 +9,7 @@ export function useLogin() {
     isPending: isLogggingIn,
     isSuccess,
     isError,
+    data,
     error,
   } = useMutation({
     mutationFn: loginUser,
@@ -26,5 +27,6 @@ export function useLogin() {
     isSuccess,
     isError,
     error,
+    data,
   };
 }

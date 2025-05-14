@@ -3,8 +3,10 @@ export interface LoginCredentials {
   password: string;
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 export const loginUser = async (credentials: LoginCredentials) => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/login`, {
+  const res = await fetch(`${baseUrl}/login/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,6 +18,7 @@ export const loginUser = async (credentials: LoginCredentials) => {
     const error = await res.json();
     throw new Error(error.message || "Login failed");
   }
+
   return res.json();
 };
 
