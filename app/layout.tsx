@@ -8,12 +8,7 @@ import { Bell, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { usePathname } from "next/navigation";
 
-const inter = Inter({ subsets: ["latin"] });
-
-// export const metadata = {
-//   title: "888Market - Report Analysis Dashboard",
-//   description: "A modern dashboard for report analysis",
-// };
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -24,7 +19,7 @@ export default function RootLayout({
   const isAuthPage = pathName.includes("login");
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         {isAuthPage ? (
           children
         ) : (
