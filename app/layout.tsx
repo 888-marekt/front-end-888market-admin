@@ -9,7 +9,7 @@ import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { toast, Toaster } from "sonner";
 import { usePathname } from "next/navigation";
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
