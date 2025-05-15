@@ -16,7 +16,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const pathName = usePathname();
-  const isAuthPage = pathName.includes("login");
+  const isAuth = pathName.includes("login");
 
   function handleBell() {
     toast.success("Welcome to 888Market");
