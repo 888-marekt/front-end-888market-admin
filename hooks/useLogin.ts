@@ -1,8 +1,12 @@
+"use client";
 import { loginUser } from "@/lib/api/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function useLogin() {
   const queryClient = useQueryClient();
+  const router = useRouter();
 
   const {
     mutate: login,
@@ -13,11 +17,16 @@ export function useLogin() {
     error,
   } = useMutation({
     mutationFn: loginUser,
-    onSuccess: () => {
+    onSuccess: (dataSuccess) => {
+      localStorage.setItem("accessToken", dataSuccess.access);
+      localStorage.setItem("refreshToken", dataSuccess.refresh);
       queryClient.invalidateQueries({ queryKey: ["login"] });
+      router.replace("/dashboard");
+      toast.success("Loged in successfully");
     },
     onError: (err: any) => {
-      console.error("Login Error:", err?.message || "Unknown Error");
+      toast.error("Credentials are incorrect");
+      console.log(err.message);
     },
   });
 

@@ -25,7 +25,7 @@ export const loginUser = async (credentials: LoginCredentials) => {
 export const refreshToken = async () => {
   const refresh = localStorage.getItem("refreshToken");
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/login/refresh`,
+    `${process.env.NEXT_PUBLIC_API_URL}/api/login/refresh/`,
     {
       method: "POST",
       headers: {
@@ -40,6 +40,6 @@ export const refreshToken = async () => {
     throw new Error(error.message || "Failed to refresh token");
   }
   const result = await res.json();
-  localStorage.setItem("accessToken", result.access);
-  localStorage.setItem("refreshToken", result.refresh);
+  localStorage.setItem("accessToken", result?.access);
+  localStorage.setItem("refreshToken", result?.refresh);
 };

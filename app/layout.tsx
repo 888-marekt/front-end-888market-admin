@@ -1,5 +1,4 @@
 "use client";
-
 import type React from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
@@ -7,6 +6,8 @@ import { Bell, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { usePathname } from "next/navigation";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
+import { useAuthBootstrap } from "@/hooks/useAuthBootstrap";
+import { toast, Toaster } from "sonner";
 
 export default function RootLayout({
   children,
@@ -15,6 +16,11 @@ export default function RootLayout({
 }>) {
   const pathName = usePathname();
   const isAuthPage = pathName.includes("login");
+
+  function handleBell() {
+    toast.success("Welcome to 888Market");
+  }
+
   return (
     <html lang="en">
       <body>
@@ -33,7 +39,10 @@ export default function RootLayout({
                     <button className="p-2 text-gray-500 hover:text-gray-700">
                       <Search size={20} />
                     </button>
-                    <button className="p-2 text-gray-500 hover:text-gray-700 relative">
+                    <button
+                      className="p-2 text-gray-500 hover:text-gray-700 relative"
+                      onClick={handleBell}
+                    >
                       <Bell size={20} />
                       <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                     </button>
@@ -53,6 +62,7 @@ export default function RootLayout({
               </div>
             </div>
           )}
+          <Toaster position="bottom-right" />
         </ReactQueryProvider>
       </body>
     </html>
