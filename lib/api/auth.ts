@@ -25,16 +25,13 @@ export const loginUser = async (credentials: LoginCredentials) => {
 export const refreshToken = async () => {
   const refresh = localStorage.getItem("refreshToken");
   console.log(refresh);
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/login/refresh/`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ refresh }),
-    }
-  );
+  const res = await fetch(`${baseUrl}/login/refresh/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ refresh }),
+  });
 
   if (!res.ok) {
     const error = await res.json();
