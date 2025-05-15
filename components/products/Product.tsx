@@ -1,7 +1,8 @@
-import { Checkbox } from "@radix-ui/react-checkbox";
-import { MoreVertical } from "lucide-react";
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+import { MoreVertical } from "lucide-react";
+
+import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "../ui/button";
 import { ProductProps } from "./type";
 import { Badge } from "@/components/ui/badge";

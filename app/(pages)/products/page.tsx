@@ -12,7 +12,7 @@ import Product from "@/components/products/Product";
 import { ProductProps } from "@/components/products/type";
 
 export default function Products() {
-  const { products } = useProducts();
+  const { products, isLoadingProducts } = useProducts();
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
@@ -90,9 +90,15 @@ export default function Products() {
                 </tr>
               </thead>
               <tbody>
-                {allProducts?.map((product: ProductProps) => (
-                  <Product key={product.id} product={product} />
-                ))}
+                {isLoadingProducts ? (
+                  <div className="flex justify-center items-center p-10">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                  </div>
+                ) : (
+                  allProducts?.map((product: ProductProps) => (
+                    <Product key={product.id} product={product} />
+                  ))
+                )}
               </tbody>
             </table>
           </div>
