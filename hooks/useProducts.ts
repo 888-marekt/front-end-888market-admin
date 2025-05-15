@@ -22,11 +22,29 @@ export function useProducts() {
 
   const {
     isLoading: isLoadingProducts,
-    data: products,
+    data,
     error: errProducts,
   } = useQuery({
-    queryKey: ["cabins"],
+    queryKey: ["products"],
     queryFn: getProducts,
+  });
+  const products = data?.results.map((product: any) => {
+    const keys = Object.keys(product);
+    const newProduct: { [key: string]: any } = {};
+    keys.forEach((key) => {
+      const camelCasedKey = key
+        .split("_")
+        .map((k: string, index) => {
+          let newKey = k;
+          if (index !== 0) {
+            newKey = k.charAt(0).toUpperCase() + k.slice(1);
+          }
+          return newKey;
+        })
+        .join("");
+      newProduct[camelCasedKey] = product[key];
+    });
+    return newProduct;
   });
 
   return {

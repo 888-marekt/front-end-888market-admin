@@ -6,90 +6,19 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useProducts } from "@/hooks/useProducts";
+import Product from "@/components/products/Product";
+import { ProductProps } from "@/components/products/type";
 
 export default function Products() {
-  const productss = [
-    {
-      id: 1,
-      name: "Nike Air Max 270",
-      image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
-      category: "Footwear",
-      price: "$120.00",
-      stock: 45,
-      status: "In Stock",
-    },
-    {
-      id: 2,
-      name: "Adidas Ultraboost",
-      image:
-        "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
-      category: "Footwear",
-      price: "$180.00",
-      stock: 32,
-      status: "In Stock",
-    },
-    {
-      id: 3,
-      name: "Puma RS-X",
-      image:
-        "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
-      category: "Footwear",
-      price: "$95.00",
-      stock: 18,
-      status: "Low Stock",
-    },
-    {
-      id: 4,
-      name: "New Balance 990",
-      image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
-      category: "Footwear",
-      price: "$175.00",
-      stock: 27,
-      status: "In Stock",
-    },
-    {
-      id: 5,
-      name: "Converse Chuck 70",
-      image:
-        "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
-      category: "Footwear",
-      price: "$85.00",
-      stock: 0,
-      status: "Out of Stock",
-    },
-    {
-      id: 6,
-      name: "Vans Old Skool",
-      image:
-        "https://images.unsplash.com/photo-1608231387042-66d1773070a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=320&q=80",
-      category: "Footwear",
-      price: "$65.00",
-      stock: 41,
-      status: "In Stock",
-    },
-  ];
-
-  const getStatusColor = (status: string) => {
-    switch (status) {
-      case "In Stock":
-        return "bg-green-100 text-green-600 hover:bg-green-100";
-      case "Low Stock":
-        return "bg-yellow-100 text-yellow-600 hover:bg-yellow-100";
-      case "Out of Stock":
-        return "bg-red-100 text-red-600 hover:bg-red-100";
-      default:
-        return "bg-gray-100 text-gray-600 hover:bg-gray-100";
-    }
-  };
   const { products } = useProducts();
+  const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
     console.log(products);
-  }, []);
+    setAllProducts(products);
+  }, [products?.length]);
 
   return (
     <main className="p-6">
@@ -161,38 +90,8 @@ export default function Products() {
                 </tr>
               </thead>
               <tbody>
-                {productss.map((product) => (
-                  <tr key={product.id} className="border-b border-gray-100">
-                    <td className="p-4">
-                      <Checkbox />
-                    </td>
-                    <td className="p-4">
-                      <div className="flex items-center gap-3">
-                        <div className="relative h-10 w-10 overflow-hidden rounded-md">
-                          <Image
-                            src={product.image || "/placeholder.svg"}
-                            alt={product.name}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        <span className="font-medium">{product.name}</span>
-                      </div>
-                    </td>
-                    <td className="p-4 text-sm">{product.category}</td>
-                    <td className="p-4 text-sm font-medium">{product.price}</td>
-                    <td className="p-4 text-sm">{product.stock}</td>
-                    <td className="p-4">
-                      <Badge className={getStatusColor(product.status)}>
-                        {product.status}
-                      </Badge>
-                    </td>
-                    <td className="p-4">
-                      <Button variant="ghost" size="icon">
-                        <MoreVertical size={16} />
-                      </Button>
-                    </td>
-                  </tr>
+                {allProducts?.map((product: ProductProps) => (
+                  <Product key={product.id} product={product} />
                 ))}
               </tbody>
             </table>

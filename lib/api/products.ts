@@ -38,12 +38,11 @@ export const getProducts = async () => {
       Authorization: `Bearer ${accessToken}`, // Add Bearer Token here
     },
   });
+  console.log(res.ok);
+  console.log(res.status);
 
-  if (!res.ok) {
-    const error = await res.json();
-    throw new Error(error.message || "Failed to fetch products");
-  }
   if (res.status === 401) {
+    console.log("access token expired.");
     await refreshToken();
     const accessToken = localStorage.getItem("accessToken");
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/`, {
@@ -58,6 +57,10 @@ export const getProducts = async () => {
       throw new Error(error.message || "Failed to fetch products");
     }
     return res.json();
+  }
+  if (!res.ok) {
+    const error = await res.json();
+    throw new Error(error.message || "Failed to fetch products");
   }
   return res.json();
 };

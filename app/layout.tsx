@@ -1,25 +1,28 @@
-"use client";
-
 import type React from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { Bell, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
-import { usePathname } from "next/navigation";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
+import { headers } from "next/headers";
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathName = usePathname();
-  const isAuthPage = pathName.includes("login");
+  // Getting the pathname in a Server Component (asynchronously)
+  const pathName = (await headers()).get("x-current-path") || "/";
+  const hs = (await headers()).values();
+  console.log(hs);
+  console.log(pathName);
+  // Check if the current path is an auth page
+  const isAuth = pathName.includes("/login");
   return (
     <html lang="en">
       <body>
         <ReactQueryProvider>
-          {isAuthPage ? (
+          {isAuth ? (
             children
           ) : (
             <div
@@ -40,7 +43,7 @@ export default function RootLayout({
                     <div className="flex items-center gap-2">
                       <Avatar>
                         <AvatarImage
-                          className="size-12 rounded-full"
+                          className="w-10 h-10 rounded-full"
                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                         />
                         <AvatarFallback>U</AvatarFallback>

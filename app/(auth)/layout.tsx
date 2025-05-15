@@ -1,9 +1,16 @@
-import type { ReactNode } from "react";
+import type React from "react";
+import ReactQueryProvider from "@/components/ReactQueryProvider";
 
-export default function AuthLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
-    <main className="">
-      {children}
-    </main>
+    <html lang="en">
+      <body>
+        <ReactQueryProvider>{children}</ReactQueryProvider>
+      </body>
+    </html>
   );
 }
