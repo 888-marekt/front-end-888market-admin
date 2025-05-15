@@ -6,7 +6,6 @@ import { Sidebar } from "@/components/sidebar";
 import { Bell, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
-import { useAuthBootstrap } from "@/hooks/useAuthBootstrap";
 import { toast, Toaster } from "sonner";
 import { usePathname } from "next/navigation";
 
