@@ -95,9 +95,9 @@ export default function Products() {
                     <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
                   </div>
                 ) : (
-                  <div className="flex justify-center items-center p-10">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-                  </div>
+                  allProducts?.map((product: ProductProps) => (
+                    <Product key={product.id} product={product} />
+                  ))
                 )}
               </tbody>
             </table>
