@@ -1,20 +1,20 @@
 "use client";
-import { QueryClient } from "@tanstack/react-query";
 import {
   LayoutGrid,
   ShoppingBag,
   Users,
   ShoppingCart,
-  Menu,
   SettingsIcon,
   LogOut,
   ChevronDown,
   ChartNoAxesCombined,
-  LayoutTemplate,
+  ChevronUp,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { AnimatePresence, motion } from "framer-motion";
+import { useState } from "react";
 
 export function Sidebar() {
   const pathName = usePathname();
@@ -26,6 +26,12 @@ export function Sidebar() {
     localStorage.removeItem("refreshToken");
     router.replace("/login");
     toast.success("Logged out successfully");
+  };
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
@@ -91,18 +97,65 @@ export function Sidebar() {
             <ShoppingBag size={20} />
             <span>Products</span>
           </Link>
-          <Link
-            href={"/categories"}
-            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-              activeTab === "categories"
-                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-                : "text-gray-500"
-            }`}
-          >
-            <LayoutTemplate />
-            <span>Categories</span>
-            <ChevronDown size={16} className="ml-auto" />
-          </Link>
+          <div className="w-full max-w-md">
+            <button
+              onClick={toggleDropdown}
+              className="w-full flex items-center justify-between bg-blue-100 text-blue-700 p-4 rounded-lg"
+            >
+              <div className="flex items-center gap-3">
+                <LayoutGrid className="h-5 w-5 text-blue-700" />
+                <span className="text-lg font-medium">Categories</span>
+              </div>
+              {isOpen ? (
+                <ChevronUp className="h-5 w-5 text-blue-700" />
+              ) : (
+                <ChevronDown className="h-5 w-5 text-blue-700" />
+              )}
+            </button>
+
+            <AnimatePresence>
+              {isOpen && (
+                <div className="relative ml-6 mt-1">
+                  {/* Vertical connecting line */}
+                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-gray-300" />
+
+                  {/* Category item */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                    className="relative"
+                  >
+                    <div className="absolute left-0 top-1/2 w-4 h-0.5 bg-blue-400" />
+                    <Link
+                      href="/category"
+                      className="block ml-6 p-4 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                    >
+                      Category
+                    </Link>
+                  </motion.div>
+
+                  {/* Sub Category item */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2, delay: 0.1 }}
+                    className="relative mt-2"
+                  >
+                    <div className="absolute left-0 top-1/2 w-4 h-0.5 bg-gray-300" />
+                    <Link
+                      href="/subcategory"
+                      className="block ml-6 p-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                    >
+                      Sub Category
+                    </Link>
+                  </motion.div>
+                </div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
 
         <div>
