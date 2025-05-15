@@ -10,25 +10,35 @@ import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Eye, EyeOff } from "lucide-react";
 import { redirect } from "next/navigation";
+import { useLogin } from "@/hooks/useLogin";
+import Loading from "@/app/loading";
 
 interface LoginPageProps {
   onLogin: (email: string, password: string) => boolean;
 }
 
 export function LoginPage({ onLogin }: LoginPageProps) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("yona@example.com");
+  const [password, setPassword] = useState("12345678");
   const [error, setError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [isRobot, setIsRobot] = useState(false);
-
+  const {
+    login,
+    isLogggingIn,
+    isSuccess,
+    isError,
+    data: loginData,
+    error: loginError,
+  } = useLogin();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    redirect("/dashboard");
+    login({ email, password });
   };
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4 bg-[url('/img/admin-bg.svg')]">
+      {isLogggingIn && <Loading />}
       <div className="w-full max-w-xl grid bg-white rounded-lg overflow-hidden shadow-xl">
         <div className="p-8 flex flex-col justify-center">
           <div className="text-center mb-8">

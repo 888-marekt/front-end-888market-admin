@@ -1,23 +1,25 @@
+"use client";
 import type React from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
 import { Bell, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
-import { headers } from "next/headers";
+import { useAuthBootstrap } from "@/hooks/useAuthBootstrap";
+import { toast, Toaster } from "sonner";
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Getting the pathname in a Server Component (asynchronously)
-  const pathName = (await headers()).get("x-current-path") || "/";
-  const hs = (await headers()).values();
-  console.log(hs);
-  console.log(pathName);
-  // Check if the current path is an auth page
-  const isAuth = pathName.includes("/login");
+  const pathName = usePathname();
+  const isAuthPage = pathName.includes("login");
+
+  function handleBell() {
+    toast.success("Welcome to 888Market");
+  }
+
   return (
     <html lang="en">
       <body>
@@ -36,7 +38,10 @@ export default async function RootLayout({
                     <button className="p-2 text-gray-500 hover:text-gray-700">
                       <Search size={20} />
                     </button>
-                    <button className="p-2 text-gray-500 hover:text-gray-700 relative">
+                    <button
+                      className="p-2 text-gray-500 hover:text-gray-700 relative"
+                      onClick={handleBell}
+                    >
                       <Bell size={20} />
                       <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
                     </button>
@@ -56,6 +61,7 @@ export default async function RootLayout({
               </div>
             </div>
           )}
+          <Toaster position="bottom-right" />
         </ReactQueryProvider>
       </body>
     </html>

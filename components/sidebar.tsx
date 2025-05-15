@@ -1,5 +1,5 @@
 "use client";
-
+import { QueryClient } from "@tanstack/react-query";
 import {
   LayoutGrid,
   ShoppingBag,
@@ -11,15 +11,19 @@ import {
   ChevronDown,
 } from "lucide-react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 export function Sidebar() {
   const pathName = usePathname();
+  const router = useRouter();
   const activeTab = pathName.slice(pathName.indexOf("/") + 1);
 
   const handleLogout = () => {
-    localStorage.removeItem("isAuthenticated");
-    window.location.reload();
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
+    router.replace("/login");
+    toast.success("Logged out successfully");
   };
 
   return (
