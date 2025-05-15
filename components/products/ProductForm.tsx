@@ -29,7 +29,10 @@ export default function ProductForm() {
     <div className="max-w-7xl p-6 bg-white">
       <div className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
-          <Link href={"/products"} className="rounded-full hover:bg-blue-100">
+          <Link
+            href={"/products"}
+            className="size-10 rounded-full hover:bg-blue-100 grid place-items-center"
+          >
             <ArrowLeft className="h-5 w-5 text-gray-700" />
           </Link>
           <div className="flex items-center gap-2">
@@ -59,7 +62,7 @@ export default function ProductForm() {
             <div className="space-y-4">
               <div>
                 <Label htmlFor="productName" className="block mb-2">
-                  Name Product
+                  Product Name
                 </Label>
                 <Input
                   id="productName"
@@ -70,7 +73,7 @@ export default function ProductForm() {
 
               <div>
                 <Label htmlFor="productDescription" className="block mb-2">
-                  Description Product
+                  Product Description
                 </Label>
                 <Textarea
                   id="productDescription"
@@ -86,53 +89,50 @@ export default function ProductForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
                 <Label htmlFor="basePrice" className="block mb-2">
-                  Base Pricing
+                  Price
                 </Label>
                 <Input
                   id="basePrice"
-                  defaultValue="$47.55"
+                  defaultValue={47}
                   className="bg-gray-100 border-0"
+                  type="number"
                 />
               </div>
 
               <div>
                 <Label htmlFor="stock" className="block mb-2">
-                  Stock
+                  Currency
                 </Label>
                 <Input
                   id="stock"
-                  defaultValue="77"
+                  defaultValue={"USD"}
                   className="bg-gray-100 border-0"
+                  type="string"
                 />
               </div>
 
               <div>
                 <Label htmlFor="discount" className="block mb-2">
-                  Discount
+                  Stock
                 </Label>
                 <Input
                   id="discount"
-                  defaultValue="10%"
+                  defaultValue={300}
+                  type="number"
                   className="bg-gray-100 border-0"
                 />
               </div>
 
               <div>
                 <Label htmlFor="discountType" className="block mb-2">
-                  Discount Type
+                  City
                 </Label>
-                <Select defaultValue="chinese-new-year">
-                  <SelectTrigger className="bg-gray-100 border-0">
-                    <SelectValue placeholder="Select discount type" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="chinese-new-year">
-                      Chinese New Year Discount
-                    </SelectItem>
-                    <SelectItem value="seasonal">Seasonal Discount</SelectItem>
-                    <SelectItem value="clearance">Clearance Sale</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="stock"
+                  defaultValue={"UAE"}
+                  className="bg-gray-100 border-0"
+                  type="string"
+                />
               </div>
             </div>
           </div>
@@ -191,16 +191,12 @@ export default function ProductForm() {
                 <Label htmlFor="productCategory" className="block mb-2">
                   Product Category
                 </Label>
-                <Select defaultValue="jacket">
-                  <SelectTrigger className="bg-gray-100 border-0">
-                    <SelectValue placeholder="Select category" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="jacket">Jacket</SelectItem>
-                    <SelectItem value="pants">Pants</SelectItem>
-                    <SelectItem value="shirts">Shirts</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Input
+                  id="stock"
+                  defaultValue={"Jacket"}
+                  className="bg-gray-100 border-0"
+                  type="string"
+                />
               </div>
 
               <Button className="w-full gap-2 bg-blue-200 text-blue-800 hover:bg-blue-300">

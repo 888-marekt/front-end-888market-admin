@@ -9,6 +9,8 @@ import {
   SettingsIcon,
   LogOut,
   ChevronDown,
+  ChartNoAxesCombined,
+  LayoutTemplate,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -56,90 +58,131 @@ export function Sidebar() {
       </div>
 
       <nav className="space-y-4 flex-1">
-        <Link
-          href={"/dashboard"}
-          className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-            activeTab === "dashboard"
-              ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-              : "text-gray-500"
-          }`}
-        >
-          <LayoutGrid size={20} />
-          <span>Dashboard</span>
-        </Link>
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Main
+          </label>
+          <Link
+            href={"/dashboard"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "dashboard"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <LayoutGrid size={20} />
+            <span>Dashboard</span>
+          </Link>
+        </div>
 
-        <Link
-          href={"/products"}
-          className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-            activeTab === "products"
-              ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-              : "text-gray-500"
-          }`}
-        >
-          <ShoppingBag size={20} />
-          <span>Products</span>
-          <ChevronDown size={16} className="ml-auto" />
-        </Link>
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Product Management
+          </label>
 
-        <Link
-          href={"/flashsales"}
-          className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-            activeTab === "flashsales"
-              ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-              : "text-gray-500"
-          }`}
-        >
-          <ShoppingBag size={20} />
-          <span>Flash Sales</span>
-        </Link>
+          <Link
+            href={"/products"}
+            className={`mb-3 flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "products"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <ShoppingBag size={20} />
+            <span>Products</span>
+          </Link>
+          <Link
+            href={"/categories"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "categories"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <LayoutTemplate />
+            <span>Categories</span>
+            <ChevronDown size={16} className="ml-auto" />
+          </Link>
+        </div>
 
-        <Link
-          href={"/customers"}
-          className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-            activeTab === "customers"
-              ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-              : "text-gray-500"
-          }`}
-        >
-          <Users size={20} />
-          <span>Customers</span>
-        </Link>
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Order Management
+          </label>
+          <Link
+            href={"/orders"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "orders"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <ShoppingCart size={20} />
+            <span>Orders</span>
+          </Link>
+          <Link
+            href={"/flashsales"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "flashsales"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <ShoppingBag size={20} />
+            <span>Flash Sales</span>
+          </Link>
+        </div>
 
-        <Link
-          href={"/orderlist"}
-          className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-            activeTab === "orderlist"
-              ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-              : "text-gray-500"
-          }`}
-        >
-          <ShoppingCart size={20} />
-          <span>Order List</span>
-        </Link>
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Customer Management
+          </label>
+          <Link
+            href={"/customers"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "customers"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <Users size={20} />
+            <span>Customers</span>
+          </Link>
+        </div>
 
-        <Link
-          href={"/report"}
-          className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-            activeTab === "report"
-              ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-              : "text-gray-500"
-          }`}
-        >
-          <Menu size={20} />
-          <span>Report</span>
-        </Link>
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Report & Analytics
+          </label>
+          <Link
+            href={"/analytics"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "analytics"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <ChartNoAxesCombined />
+            <span>Analytics</span>
+          </Link>
+        </div>
 
-        <Link
-          href={"/settings"}
-          className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-            activeTab === "settings"
-              ? "bg-blue-50 text-blue-600 border-l border-blue-600"
-              : "text-gray-500"
-          }`}
-        >
-          <SettingsIcon size={20} />
-          <span>Settings</span>
-        </Link>
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Account Settings
+          </label>
+          <Link
+            href={"/settings"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "settings"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <SettingsIcon size={20} />
+            <span>Settings</span>
+          </Link>
+        </div>
       </nav>
 
       <div className="mt-auto pt-4 border-t border-gray-100">
