@@ -100,16 +100,26 @@ export function Sidebar() {
           <div className="w-full max-w-md">
             <button
               onClick={toggleDropdown}
-              className="w-full flex items-center justify-between bg-blue-100 text-blue-700 p-4 rounded-lg"
+              className={`mb-3 flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+                isOpen
+                  ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                  : "text-gray-500"
+              }`}
             >
               <div className="flex items-center gap-3">
-                <LayoutGrid className="h-5 w-5 text-blue-700" />
-                <span className="text-lg font-medium">Categories</span>
+                <LayoutGrid
+                  className={`h-5 w-5 ${isOpen ? "text-blue-600" : ""}`}
+                />
+                <span>Categories</span>
               </div>
               {isOpen ? (
-                <ChevronUp className="h-5 w-5 text-blue-700" />
+                <ChevronUp
+                  className={`h-5 w-5 ${isOpen ? "text-blue-600" : ""}`}
+                />
               ) : (
-                <ChevronDown className="h-5 w-5 text-blue-700" />
+                <ChevronDown
+                  className={`h-5 w-5 ${isOpen ? "text-blue-600" : ""}`}
+                />
               )}
             </button>
 
@@ -130,7 +140,11 @@ export function Sidebar() {
                     <div className="absolute left-0 top-1/2 w-4 h-0.5 bg-blue-400" />
                     <Link
                       href="/category"
-                      className="block ml-6 p-4 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                      className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+                        activeTab === "dashboard"
+                          ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                          : "text-gray-500"
+                      }`}
                     >
                       Category
                     </Link>
@@ -147,7 +161,11 @@ export function Sidebar() {
                     <div className="absolute left-0 top-1/2 w-4 h-0.5 bg-gray-300" />
                     <Link
                       href="/subcategory"
-                      className="block ml-6 p-4 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                      className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+                        activeTab === "dashboard"
+                          ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                          : "text-gray-500"
+                      }`}
                     >
                       Sub Category
                     </Link>
