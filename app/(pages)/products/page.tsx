@@ -4,16 +4,16 @@ import { Filter, MoreVertical, Plus, Search, Trash2 } from "lucide-react";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Badge } from "@/components/ui/badge";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useProducts } from "@/hooks/useProducts";
 import Product from "@/components/products/Product";
 import { ProductProps } from "@/components/products/type";
+import { useRouter } from "next/navigation";
 
 export default function Products() {
   const { products, isLoadingProducts } = useProducts();
   const [allProducts, setAllProducts] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     console.log(products);
@@ -27,7 +27,10 @@ export default function Products() {
           <h2 className="text-2xl font-bold mb-1">Products</h2>
           <p className="text-gray-500">Manage your product inventory</p>
         </div>
-        <Button className="bg-blue-600 hover:bg-blue-700">
+        <Button
+          className="bg-blue-600 hover:bg-blue-700"
+          onClick={() => router.push("/product/new")}
+        >
           <Plus className="mr-2 h-4 w-4" /> Add Product
         </Button>
       </div>
@@ -91,9 +94,13 @@ export default function Products() {
               </thead>
               <tbody>
                 {isLoadingProducts ? (
-                  <div className="flex justify-center items-center p-10">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
-                  </div>
+                  <tr>
+                    <td className="px-4 py-10" colSpan={7}>
+                      <div className="flex justify-center items-center w-full">
+                        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                      </div>
+                    </td>
+                  </tr>
                 ) : (
                   allProducts?.map((product: ProductProps) => (
                     <Product key={product.id} product={product} />

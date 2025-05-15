@@ -6,11 +6,5 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        <ReactQueryProvider>{children}</ReactQueryProvider>
-      </body>
-    </html>
-  );
+  return <main>{children}</main>;
 }
