@@ -26,7 +26,7 @@ export const refreshToken = async () => {
   const refresh = localStorage.getItem("refreshToken");
   console.log(refresh);
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/login/refresh/`,
+    `${process.env.NEXT_PUBLIC_API_URL}/login/refresh/`,
     {
       method: "POST",
       headers: {

@@ -28,10 +28,11 @@ interface Product {
   cityId: number;
 }
 
+const baseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 export const getProducts = async () => {
   const accessToken = localStorage.getItem("accessToken");
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/`, {
+  const res = await fetch(`${baseUrl}/product/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -45,7 +46,7 @@ export const getProducts = async () => {
     console.log("access token expired.");
     await refreshToken();
     const accessToken = localStorage.getItem("accessToken");
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/`, {
+    const res = await fetch(`${baseUrl}/product/`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -68,7 +69,7 @@ export const getProducts = async () => {
 export const postProduct = async (product: Product) => {
   const accessToken = localStorage.getItem("accessToken");
 
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/product/`, {
+  const res = await fetch(`${baseUrl}/product/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
