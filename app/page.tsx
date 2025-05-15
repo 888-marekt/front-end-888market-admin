@@ -7,20 +7,17 @@ import Loading from "./loading";
 
 export default function Home() {
   const router = useRouter();
-  const loading = useAuthBootstrap();
 
-  if (loading) {
-    <Loading />;
+  const accessToken = localStorage.getItem("accessToken");
+  console.log("in page", accessToken && !isTokenExpired(accessToken));
+
+  if (accessToken && !isTokenExpired(accessToken)) {
+    router.replace("/dashboard");
+  } else {
+    router.replace("/login");
   }
-
-  useEffect(() => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken && !isTokenExpired(accessToken)) {
-      router.replace("/dashboard");
-    } else {
-      router.replace("/login");
-    }
-  }, [router]);
+  // useEffect(() => {
+  // }, [router]);
 
   return null;
 }

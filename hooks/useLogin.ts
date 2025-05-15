@@ -1,12 +1,15 @@
 "use client";
+import { useAuth } from "@/context/AuthContext";
 import { loginUser } from "@/lib/api/auth";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useRouter } from "next/navigation";
+import { set } from "react-hook-form";
 import { toast } from "sonner";
 
 export function useLogin() {
   const queryClient = useQueryClient();
   const router = useRouter();
+  const { setAuthenticated } = useAuth();
 
   const {
     mutate: login,
@@ -21,6 +24,7 @@ export function useLogin() {
       localStorage.setItem("accessToken", dataSuccess.access);
       localStorage.setItem("refreshToken", dataSuccess.refresh);
       queryClient.invalidateQueries({ queryKey: ["login"] });
+      setAuthenticated(true);
       router.replace("/dashboard");
       toast.success("Loged in successfully");
     },
