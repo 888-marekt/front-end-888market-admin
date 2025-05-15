@@ -33,7 +33,6 @@ export const getProducts = async () => {
   const accessToken = localStorage.getItem("accessToken");
 
   const res = await fetch(`${baseUrl}/product/`, {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/product/`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
@@ -54,16 +53,6 @@ export const getProducts = async () => {
         Authorization: `Bearer ${accessToken}`, // Add Bearer Token here
       },
     });
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_API_BASE_URL}/product/`,
-      {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`, // Add Bearer Token here
-        },
-      }
-    );
     if (!res.ok) {
       const error = await res.json();
       throw new Error(error.message || "Failed to fetch products");
@@ -81,7 +70,6 @@ export const postProduct = async (product: Product) => {
   const accessToken = localStorage.getItem("accessToken");
 
   const res = await fetch(`${baseUrl}/product/`, {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/product/`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
