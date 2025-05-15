@@ -1,4 +1,5 @@
 "use client";
+
 import type React from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
@@ -7,6 +8,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { useAuthBootstrap } from "@/hooks/useAuthBootstrap";
 import { toast, Toaster } from "sonner";
+import { usePathname } from "next/navigation";
 
 export default async function RootLayout({
   children,
