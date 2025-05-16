@@ -15,7 +15,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
 import { use, useEffect, useState } from "react";
-import path from "path";
+import ThirdPartyConfigDropdown from "./ThirdPartConfigInSideNav";
 
 export function Sidebar() {
   const pathName = usePathname();
@@ -324,6 +324,9 @@ export function Sidebar() {
             <span>Customizing Pages</span>
           </Link>
         </div>
+
+        {/* 3rd Party customization */}
+        <ThirdPartyConfigDropdown activeTab={activeTab} />
       </nav>
 
       <div className="mt-auto pt-4 border-t border-gray-100">
