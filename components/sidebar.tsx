@@ -260,7 +260,7 @@ export function Sidebar() {
             Report & Analytics
           </label>
           <Link
-            href={"/analytics"}
+            href={"/report"}
             className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
               activeTab === "analytics"
                 ? "bg-blue-50 text-blue-600 border-l border-blue-600"
@@ -268,7 +268,7 @@ export function Sidebar() {
             }`}
           >
             <ChartNoAxesCombined />
-            <span>Analytics</span>
+            <span>Reports</span>
           </Link>
         </div>
 
