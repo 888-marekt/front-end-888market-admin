@@ -31,7 +31,7 @@ export default function Categories() {
           className="bg-blue-600 hover:bg-blue-700"
           onClick={() => router.push("/category/new")}
         >
-          <Plus className="mr-2 h-4 w-4" /> Create new
+          <Plus className="mr-2 h-4 w-4 capitalize" /> Create New
         </Button>
       </div>
 
@@ -90,7 +90,14 @@ export default function Categories() {
                   </tr>
                 ) : (
                   allCategories?.map((product: ProductProps) => (
-                    <Category key={product.id} product={product} />
+                    <Category
+                      key={product.id}
+                      category={{
+                        name: product.title,
+                        imageUrl: product.imageUrl,
+                        id: product.id,
+                      }}
+                    />
                   ))
                 )}
               </tbody>

@@ -31,7 +31,7 @@ export default function SubCategories() {
           className="bg-blue-600 hover:bg-blue-700"
           onClick={() => router.push("/subcategory/new")}
         >
-          <Plus className="mr-2 h-4 w-4" /> Create new
+          <Plus className="mr-2 h-4 w-4" /> Create New
         </Button>
       </div>
 
@@ -93,7 +93,15 @@ export default function SubCategories() {
                   </tr>
                 ) : (
                   allCategories?.map((product: ProductProps) => (
-                    <SubCategory key={product.id} product={product} />
+                    <SubCategory
+                      key={product.id}
+                      subCategory={{
+                        name: product.title,
+                        imageUrl: product.imageUrl,
+                        id: product.id,
+                        // category: product.category,
+                      }}
+                    />
                   ))
                 )}
               </tbody>
