@@ -15,6 +15,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
 import { use, useEffect, useState } from "react";
+import path from "path";
 
 export function Sidebar() {
   const pathName = usePathname();
@@ -24,6 +25,9 @@ export function Sidebar() {
   useEffect(() => {
     if (!["subcategories", "categories"].includes(activeTab)) {
       setIsOpen(false);
+    }
+    if (pathName.includes("category") || pathName.includes("subcategory")) {
+      setIsOpen(true);
     }
   }, [activeTab]);
 
@@ -135,7 +139,7 @@ export function Sidebar() {
                   {/* Vertical connecting line */}
                   <div
                     className={`absolute left-0 top-0 bottom-0 w-0.5 ${
-                      activeTab === "subcategories"
+                      activeTab === "subcategories" || pathName.includes("sub")
                         ? "bg-gradient-to-t"
                         : "bg-gradient-to-b"
                     } bg-gradient-to-b from-blue-400 to-gray-300`}
@@ -151,7 +155,9 @@ export function Sidebar() {
                   >
                     <div
                       className={`absolute left-0 top-1/2 w-4 h-0.5 ${
-                        activeTab === "categories"
+                        activeTab === "categories" ||
+                        (pathName.includes("category") &&
+                          !pathName.includes("sub"))
                           ? "bg-blue-600"
                           : "bg-gray-300"
                       }`}
@@ -159,7 +165,9 @@ export function Sidebar() {
                     <Link
                       href="/categories"
                       className={`ml-4 flex w-[calc(100%-16px)] items-center gap-3 pl-3  py-2 rounded-md hover:bg-gray-100 ${
-                        activeTab === "categories"
+                        activeTab === "categories" ||
+                        (pathName.includes("category") &&
+                          !pathName.includes("sub"))
                           ? "bg-blue-50 text-blue-600 border-l border-blue-600"
                           : "text-gray-500"
                       }`}
@@ -178,7 +186,8 @@ export function Sidebar() {
                   >
                     <div
                       className={`absolute left-0 top-1/2 w-4 h-0.5 ${
-                        activeTab === "subcategories"
+                        activeTab === "subcategories" ||
+                        pathName.includes("sub")
                           ? "bg-blue-600"
                           : "bg-gray-300"
                       }`}
@@ -186,7 +195,8 @@ export function Sidebar() {
                     <Link
                       href="/subcategories"
                       className={`ml-4 flex w-[calc(100%-16px)] items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-                        activeTab === "subcategories"
+                        activeTab === "subcategories" ||
+                        pathName.includes("sub")
                           ? "bg-blue-50 text-blue-600 border-l border-blue-600"
                           : "text-gray-500"
                       }`}

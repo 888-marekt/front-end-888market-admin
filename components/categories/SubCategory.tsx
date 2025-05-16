@@ -13,7 +13,7 @@ interface ProductComponentProps {
 }
 
 export default function Category({ product }: ProductComponentProps) {
-  const { imageUrl, title, category, formattedPrice, stock = 12 } = product;
+  const { imageUrl, title, category } = product;
   return (
     <tr className="border-b border-gray-100">
       <td className="p-4">

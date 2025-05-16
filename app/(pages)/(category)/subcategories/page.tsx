@@ -6,10 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useEffect, useState } from "react";
 import { useProducts } from "@/hooks/useProducts";
-import Product from "@/components/products/Product";
 import { ProductProps } from "@/components/products/type";
 import { useRouter } from "next/navigation";
-import Category from "@/components/categories/Category";
 import SubCategory from "@/components/categories/SubCategory";
 
 export default function SubCategories() {
@@ -31,9 +29,9 @@ export default function SubCategories() {
         </div>
         <Button
           className="bg-blue-600 hover:bg-blue-700"
-          onClick={() => router.push("/product/new")}
+          onClick={() => router.push("/subcategory/new")}
         >
-          <Plus className="mr-2 h-4 w-4" /> Add sub category
+          <Plus className="mr-2 h-4 w-4" /> Create new
         </Button>
       </div>
 
