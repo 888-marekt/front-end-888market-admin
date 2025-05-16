@@ -3,13 +3,14 @@
 import type React from "react";
 import "./globals.css";
 import { Sidebar } from "@/components/sidebar";
-import { Bell, ChevronDown, Search } from "lucide-react";
-import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { toast, Toaster } from "sonner";
 import { usePathname } from "next/navigation";
 import { AuthProvider } from "@/context/AuthContext";
 import AuthGuard from "@/components/AuthGuard";
+import Header from "@/components/Header";
+import { Bell, ChevronDown, Search } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 
 export default function RootLayout({
   children,
@@ -58,7 +59,6 @@ export default function RootLayout({
                             />
                             <AvatarFallback>U</AvatarFallback>
                           </Avatar>
-                          <ChevronDown size={16} className="text-gray-500" />
                         </div>
                       </div>
                     </header>

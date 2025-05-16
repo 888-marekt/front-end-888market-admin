@@ -90,7 +90,6 @@ export function Sidebar() {
             <span>Dashboard</span>
           </Link>
         </div>
-
         <div>
           <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
             Product Management
@@ -209,7 +208,6 @@ export function Sidebar() {
             </AnimatePresence>
           </div>
         </div>
-
         <div>
           <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
             Order Management
@@ -237,7 +235,6 @@ export function Sidebar() {
             <span>Flash Sales</span>
           </Link>
         </div>
-
         <div>
           <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
             Customer Management
@@ -254,7 +251,6 @@ export function Sidebar() {
             <span>Customers</span>
           </Link>
         </div>
-
         <div>
           <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
             Report & Analytics
@@ -271,7 +267,6 @@ export function Sidebar() {
             <span>Reports</span>
           </Link>
         </div>
-
         <div>
           <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
             Account Settings
@@ -286,6 +281,44 @@ export function Sidebar() {
           >
             <SettingsIcon size={20} />
             <span>Settings</span>
+          </Link>
+        </div>
+
+        {/* Shops customization */}
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Shops
+          </label>
+
+          <Link
+            href={"/shops"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "shops"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <ShoppingBag size={20} />
+            <span>Shops</span>
+          </Link>
+        </div>
+
+        {/* pages customization */}
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            Customizing Pages
+          </label>
+
+          <Link
+            href={"/pages"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "pages"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <LayoutGrid size={20} />
+            <span>Customizing Pages</span>
           </Link>
         </div>
       </nav>

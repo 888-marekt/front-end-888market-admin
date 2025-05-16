@@ -21,6 +21,7 @@ export function useLogin() {
   } = useMutation({
     mutationFn: loginUser,
     onSuccess: (dataSuccess) => {
+      console.log("dataSuccess", dataSuccess);
       localStorage.setItem("accessToken", dataSuccess.access);
       localStorage.setItem("refreshToken", dataSuccess.refresh);
       queryClient.invalidateQueries({ queryKey: ["login"] });
