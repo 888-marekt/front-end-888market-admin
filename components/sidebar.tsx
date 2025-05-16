@@ -45,7 +45,10 @@ export function Sidebar() {
   };
 
   return (
-    <div className="w-64 border-r border-gray-100 p-4 flex flex-col h-screen overflow-hidden">
+    <div
+      className="w-64 border-r border-gray-100 p-4 flex flex-col h-screen overflow-scroll scrollbar-none"
+      style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+    >
       <div className="flex items-center gap-6 mb-12">
         <div className="text-blue-600 font-bold text-xl flex items-center">
           <svg

@@ -2,7 +2,7 @@
 
 import type React from "react";
 import "./globals.css";
-import { Sidebar } from "@/components/sidebar";
+import { Sidebar } from "@/components/Sidebar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import { toast, Toaster } from "sonner";
 import { usePathname } from "next/navigation";
