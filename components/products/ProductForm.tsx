@@ -140,7 +140,7 @@ export default function ProductForm() {
 
         <div className="space-y-6">
           <div className="bg-gray-50 p-6 rounded-lg">
-            <h2 className="text-lg font-medium mb-4">Upload Img</h2>
+            <h2 className="text-lg font-medium mb-4">Upload Image</h2>
             <div className="bg-white rounded-lg p-4 mb-4">
               <Image
                 width={200}
