@@ -34,7 +34,7 @@ export default function Category({ product }: ProductComponentProps) {
           </div>
         </div>
       </td>
-      <td className="p-4 text-sm">{category?.name}</td>
+      <td className="p-4 text-sm">{"Electronics"}</td>
       <td className="p-4 text-sm">{category?.name}</td>
       <td className="p-4">
         <Button variant="ghost" size="icon">
