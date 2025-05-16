@@ -14,12 +14,18 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
+import { use, useEffect, useState } from "react";
 
 export function Sidebar() {
   const pathName = usePathname();
   const router = useRouter();
   const activeTab = pathName.slice(pathName.indexOf("/") + 1);
+
+  useEffect(() => {
+    if (!["subcategories", "categories"].includes(activeTab)) {
+      setIsOpen(false);
+    }
+  }, [activeTab]);
 
   const handleLogout = () => {
     localStorage.removeItem("accessToken");
@@ -127,7 +133,13 @@ export function Sidebar() {
               {isOpen && (
                 <div className="relative ml-6 mt-1">
                   {/* Vertical connecting line */}
-                  <div className="absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-400 to-gray-300" />
+                  <div
+                    className={`absolute left-0 top-0 bottom-0 w-0.5 ${
+                      activeTab === "subcategories"
+                        ? "bg-gradient-to-t"
+                        : "bg-gradient-to-b"
+                    } bg-gradient-to-b from-blue-400 to-gray-300`}
+                  />
 
                   {/* Category item */}
                   <motion.div
@@ -137,11 +149,17 @@ export function Sidebar() {
                     transition={{ duration: 0.2 }}
                     className="relative"
                   >
-                    <div className="absolute left-0 top-1/2 w-4 h-0.5 bg-blue-400" />
+                    <div
+                      className={`absolute left-0 top-1/2 w-4 h-0.5 ${
+                        activeTab === "categories"
+                          ? "bg-blue-600"
+                          : "bg-gray-300"
+                      }`}
+                    />
                     <Link
-                      href="/category"
-                      className={`ml-4 flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-                        activeTab === "dashboard"
+                      href="/categories"
+                      className={`ml-4 flex w-[calc(100%-16px)] items-center gap-3 pl-3  py-2 rounded-md hover:bg-gray-100 ${
+                        activeTab === "categories"
                           ? "bg-blue-50 text-blue-600 border-l border-blue-600"
                           : "text-gray-500"
                       }`}
@@ -158,11 +176,17 @@ export function Sidebar() {
                     transition={{ duration: 0.2, delay: 0.1 }}
                     className="relative mt-2"
                   >
-                    <div className="absolute left-0 top-1/2 w-4 h-0.5 bg-gray-300" />
+                    <div
+                      className={`absolute left-0 top-1/2 w-4 h-0.5 ${
+                        activeTab === "subcategories"
+                          ? "bg-blue-600"
+                          : "bg-gray-300"
+                      }`}
+                    />
                     <Link
-                      href="/subcategory"
-                      className={`ml-4 flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
-                        activeTab === "dashboard"
+                      href="/subcategories"
+                      className={`ml-4 flex w-[calc(100%-16px)] items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+                        activeTab === "subcategories"
                           ? "bg-blue-50 text-blue-600 border-l border-blue-600"
                           : "text-gray-500"
                       }`}

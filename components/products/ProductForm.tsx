@@ -191,12 +191,16 @@ export default function ProductForm() {
                 <Label htmlFor="productCategory" className="block mb-2">
                   Product Category
                 </Label>
-                <Input
-                  id="stock"
-                  defaultValue={"Jacket"}
-                  className="bg-gray-100 border-0"
-                  type="string"
-                />
+                <Select defaultValue="jacket">
+                  <SelectTrigger className="bg-gray-100 border-0">
+                    <SelectValue placeholder="Select category" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="jacket">Jacket</SelectItem>
+                    <SelectItem value="pants">Pants</SelectItem>
+                    <SelectItem value="shirts">Shirts</SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
 
               <Button className="w-full gap-2 bg-blue-200 text-blue-800 hover:bg-blue-300">
