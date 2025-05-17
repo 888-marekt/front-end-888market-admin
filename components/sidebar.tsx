@@ -326,7 +326,12 @@ export function Sidebar() {
         </div>
 
         {/* 3rd Party customization */}
-        <ThirdPartyConfigDropdown activeTab={activeTab} />
+        <div>
+          <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+            3rd part configs
+          </label>
+          <ThirdPartyConfigDropdown activeTab={activeTab} />
+        </div>
       </nav>
 
       <div className="mt-auto pt-4 border-t border-gray-100">

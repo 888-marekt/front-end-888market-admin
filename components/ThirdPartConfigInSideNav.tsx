@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LayoutGrid, ChevronDown, ChevronUp } from "lucide-react";
+import { LayoutGrid, ChevronDown, ChevronUp, Link2 } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,20 +31,20 @@ export default function ThirdPartyConfigDropdown({ activeTab }) {
   const items = [
     {
       label: "Payment Gateway",
-      href: "/thirdparty/payment",
+      href: "/payment-gateway",
       keyword: "payment",
     },
-    { label: "SMS Gateway", href: "/thirdparty/sms", keyword: "sms" },
-    { label: "Pusher Setup", href: "/thirdparty/pusher", keyword: "pusher" },
-    { label: "Mail Config", href: "/thirdparty/mail", keyword: "mail" },
+    { label: "SMS Gateway", href: "/sms-gateway", keyword: "sms" },
+    { label: "Pusher Setup", href: "/pusher-setup", keyword: "pusher" },
+    { label: "Mail Config", href: "/mail-config", keyword: "mail" },
     {
       label: "Firebase Notification",
-      href: "/thirdparty/firebase",
+      href: "/firebase-notification",
       keyword: "firebase",
     },
     {
       label: "Google ReCaptcha",
-      href: "/thirdparty/recaptcha",
+      href: "/google-recaptcha",
       keyword: "recaptcha",
     },
   ];
@@ -60,8 +60,8 @@ export default function ThirdPartyConfigDropdown({ activeTab }) {
         }`}
       >
         <div className="flex items-center gap-3">
-          <LayoutGrid className={`h-5 w-5 ${isOpen ? "text-blue-600" : ""}`} />
-          <span>3rd Party Configuration</span>
+          <Link2 className={`h-5 w-5 ${isOpen ? "text-blue-600" : ""}`} />
+          <span>3rd Party Config</span>
         </div>
         {isOpen ? (
           <ChevronUp className="h-5 w-5 text-blue-600" />
