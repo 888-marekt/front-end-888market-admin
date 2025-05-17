@@ -19,6 +19,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { use, useEffect, useState } from "react";
 import ThirdPartyConfigDropdown from "./ThirdPartConfigInSideNav";
 import SideBarLinksContainer from "./SideBarLinksContainer";
+import Image from "next/image";
 
 export function Sidebar() {
   const pathName = usePathname();
@@ -54,27 +55,13 @@ export function Sidebar() {
     >
       <div className="flex items-center gap-6 mb-12">
         <div className="text-blue-600 font-bold text-xl flex items-center">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="mr-2"
-          >
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z"
-              fill="currentColor"
-            />
-            <path
-              d="M12 11C13.1046 11 14 10.1046 14 9C14 7.89543 13.1046 7 12 7C10.8954 7 10 7.89543 10 9C10 10.1046 10.8954 11 12 11Z"
-              fill="currentColor"
-            />
-            <path
-              d="M12 13C9.33 13 7 14.67 7 17H17C17 14.67 14.67 13 12 13Z"
-              fill="currentColor"
-            />
-          </svg>
+          <Image
+            className="w-10 h-10 rounded-full"
+            src="./logo.jpg"
+            width={10}
+            height={10}
+            alt="logo"
+          />
           888Market
         </div>
       </div>

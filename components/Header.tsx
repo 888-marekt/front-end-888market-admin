@@ -3,6 +3,7 @@ import { toast } from "sonner";
 import { Bell, ChevronDown, Search } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@radix-ui/react-avatar";
 import { useLogin } from "@/hooks/useLogin";
+import Image from "next/image";
 
 function Header() {
   const { isLogggingIn, data } = useLogin();
@@ -27,14 +28,13 @@ function Header() {
           <span className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full"></span>
         </button>
         <div className="flex items-center gap-2">
-          <Avatar>
-            <AvatarImage
-              className="w-10 h-10 rounded-full"
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-            />
-            <AvatarFallback>U</AvatarFallback>
-          </Avatar>
-          <ChevronDown size={16} className="text-gray-500" />
+          <Image
+            className="w-10 h-10 rounded-full"
+            src="./logo.jpg"
+            width={10}
+            height={10}
+            alt="logo"
+          />
         </div>
       </div>
     </header>
