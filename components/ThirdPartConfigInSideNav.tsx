@@ -51,6 +51,9 @@ export default function ThirdPartyConfigDropdown({ activeTab }) {
 
   return (
     <div className="w-full max-w-md">
+      <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
+        3rd part configration
+      </label>
       <button
         onClick={toggleDropdown}
         className={`mb-3 flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${

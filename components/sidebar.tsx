@@ -9,6 +9,8 @@ import {
   ChevronDown,
   ChartNoAxesCombined,
   ChevronUp,
+  HelpCircleIcon,
+  HelpingHand,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -325,13 +327,40 @@ export function Sidebar() {
           </Link>
         </div>
 
-        {/* 3rd Party customization */}
+        {/* Help Note */}
         <div>
           <label className="px-3 text-[#8a94a6] mb-2 inline-block uppercase text-[11px] tracking-wider">
-            3rd part configs
+            Help and Support
           </label>
-          <ThirdPartyConfigDropdown activeTab={activeTab} />
+
+          <Link
+            href={"/help-notes"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "pages"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <HelpCircleIcon size={20} />
+            <span>Help Notes</span>
+          </Link>
+
+          {/* Help Request */}
+          <Link
+            href={"/help-requests"}
+            className={`flex w-full items-center gap-3 px-3 py-2 rounded-md hover:bg-gray-100 ${
+              activeTab === "pages"
+                ? "bg-blue-50 text-blue-600 border-l border-blue-600"
+                : "text-gray-500"
+            }`}
+          >
+            <HelpingHand size={20} />
+            <span>Help Requests</span>
+          </Link>
         </div>
+
+        {/* 3rd Party customization */}
+        <ThirdPartyConfigDropdown activeTab={activeTab} />
       </nav>
 
       <div className="mt-auto pt-4 border-t border-gray-100">
