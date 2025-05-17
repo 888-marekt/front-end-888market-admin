@@ -17,13 +17,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
 import { use, useEffect, useState } from "react";
-<<<<<<< HEAD
-import path from "path";
-import SideBarLinksContainer from "./SideBarLinksContainer";
 import ThirdPartyConfigDropdown from "./ThirdPartConfigInSideNav";
-=======
-import ThirdPartyConfigDropdown from "./ThirdPartConfigInSideNav";
->>>>>>> 40704dfc1d19c229b501a4e1dd7402d87c86b806
 
 export function Sidebar() {
   const pathName = usePathname();
