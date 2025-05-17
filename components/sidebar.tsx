@@ -18,6 +18,7 @@ import { toast } from "sonner";
 import { AnimatePresence, motion } from "framer-motion";
 import { use, useEffect, useState } from "react";
 import ThirdPartyConfigDropdown from "./ThirdPartConfigInSideNav";
+import SideBarLinksContainer from "./SideBarLinksContainer";
 
 export function Sidebar() {
   const pathName = usePathname();
