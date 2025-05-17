@@ -195,7 +195,7 @@ export function Sidebar() {
             }`}
           >
             <HelpCircleIcon size={20} />
-            <span>Help Notes</span>
+            <span>Help Note</span>
           </Link>
 
           {/* Help Request */}
